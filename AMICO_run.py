@@ -13,8 +13,8 @@ amico.util.fsl2scheme("ande_merged/merged/bvals.bval", "ande_merged/merged/norm_
 #activating rician debiasing
 #ae.set_config('doDebiasSignal',True)
 
-#setting SNR level
-#ae.set_config('DWI-SNR',75.)
+#setting in vivo SNR level
+ae.set_config('DWI-SNR',75.)
 #for ex vivo
 #ae.set_config('DWI-SNR',750.)
 #loading in raw data and masking
