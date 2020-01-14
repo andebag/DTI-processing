@@ -22,9 +22,9 @@ ae.load_data(dwi_filename = "rawDTI.nii", scheme_filename = "bvals.scheme", mask
 
 #setting up model and running
 ae.set_model("NODDI")
-ae.model.isExVivo = True   #change to true for ex vivo
-ae.model.dPar = 0.9E-3 #sets diffusivity of the model, activate for ex vivo
-ae.model.dIso = 2.0E-3 #sets isotropic diffusivity
+#ae.model.isExVivo = True   #ex vivo settings
+#ae.model.dPar = 0.9E-3 #sets diffusivity of the model, activate for ex vivo
+#ae.model.dIso = 2.0E-3 #sets isotropic diffusivity
 ae.generate_kernels()
 ae.load_kernels()
 ae.fit()
