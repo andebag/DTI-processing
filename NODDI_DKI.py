@@ -1,5 +1,6 @@
 import os.path
 from pathlib import Path
+import shutil
 filepath = 'subjects.txt'
 with open(filepath) as fp:
     line = fp.readline()
@@ -21,11 +22,13 @@ with open(filepath) as fp:
             execfile(os.path.abspath("C:\\Users\\bagdasarian\\Documents\\Python Scripts\\bvec_organize.py"))
             os.chdir("{}".format(line.strip()))            
             execfile(os.path.abspath("C:\\Users\\bagdasarian\\Documents\\Python Scripts\\AMICO_run.py"))
-
+            os.chdir("{}".format(line.strip()))
+            os.chdir("ande_merged")
+            shutil.rmtree('kernels')    #the kernel datasets are huge, recommend deleting after processing
 
 #DKI Processing if able
         my_DKI_file = Path("ande_merged\merged\DKI")
-        if my_DKI_file.is_folder():   
+        if my_DKI_file.is_file():   
            print("DKI Processing is Done")
         else:
             print("Must run DiPy")
@@ -33,8 +36,9 @@ with open(filepath) as fp:
             os.chdir("ande_merged\merged") 
             os.makedirs("DKI")#Creating DKI directory 
             os.chdir("{}".format(line.strip()))         
-            
             execfile(os.path.abspath("C:\\Users\\bagdasarian\\Documents\\Python Scripts\\myDKI.py"))
+            
+            
         line = fp.readline()
         cnt += 1
     
