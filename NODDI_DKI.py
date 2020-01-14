@@ -18,9 +18,9 @@ with open(filepath) as fp:
             print("Must run AMICO")
             os.chdir("{}".format(line.strip()))
             os.chdir("ande_merged\merged") #organizing bval/bvec into norm bval file           
-            execfile(os.path.abspath("C:\\Users\\bagdasarian\\Documents\\AMICO-master\\execute_files\\bvec_organize.py"))
+            execfile(os.path.abspath("C:\\Users\\bagdasarian\\Documents\\Python Scripts\\bvec_organize.py"))
             os.chdir("{}".format(line.strip()))            
-            execfile(os.path.abspath("C:\\Users\\bagdasarian\\Documents\\AMICO-master\\execute_files\\AMICO_run.py"))
+            execfile(os.path.abspath("C:\\Users\\bagdasarian\\Documents\\Python Scripts\\AMICO_run.py"))
 
 
 #DKI Processing if able
@@ -30,8 +30,11 @@ with open(filepath) as fp:
         else:
             print("Must run DiPy")
             os.chdir("{}".format(line.strip()))
-            os.chdir("ande_merged\merged") #Creating DKI directory    
-            os.makedirs("DKI")
+            os.chdir("ande_merged\merged") 
+            os.makedirs("DKI")#Creating DKI directory 
+            os.chdir("{}".format(line.strip()))         
+            
+            execfile(os.path.abspath("C:\\Users\\bagdasarian\\Documents\\Python Scripts\\myDKI.py"))
         line = fp.readline()
         cnt += 1
     
