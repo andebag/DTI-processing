@@ -20,11 +20,18 @@ with open(filepath) as fp:
             os.chdir("{}".format(line.strip()))
             os.chdir("ande_merged\merged") #organizing bval/bvec into norm bval file           
             execfile(os.path.abspath("C:\\Users\\bagdasarian\\Documents\\Python Scripts\\bvec_organize.py"))
-            os.chdir("{}".format(line.strip()))            
-            execfile(os.path.abspath("C:\\Users\\bagdasarian\\Documents\\Python Scripts\\AMICO_run.py"))
-            os.chdir("{}".format(line.strip()))
-            os.chdir("ande_merged")
-            shutil.rmtree('kernels')    #the kernel datasets are huge, recommend deleting after processing
+            os.chdir("{}".format(line.strip())) 
+            
+            ex_vivo = Path("ande_merged\merged\ex_vivo.txt") #setup if ex vivo sample
+            if ex_vivo.is_file():
+                print("ex vivo Processing")
+                execfile(os.path.abspath("C:\\Users\\bagdasarian\\Documents\\Python Scripts\\AMICO_run_ex_vivo.py"))
+            else:
+                print("in vivo Processing")
+                execfile(os.path.abspath("C:\\Users\\bagdasarian\\Documents\\Python Scripts\\AMICO_run.py"))
+             os.chdir("{}".format(line.strip()))
+             os.chdir("ande_merged")
+             shutil.rmtree('kernels')    #the kernel datasets are huge, recommend deleting after processing
 
 #DKI Processing if able
         my_DKI_file = Path("ande_merged\merged\DKI")
