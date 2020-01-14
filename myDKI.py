@@ -55,16 +55,20 @@ from scipy.ndimage.filters import gaussian_filter
 import nibabel as nib
 import os 
 from os.path import expanduser, join
-home = expanduser('~')
-dname = join(home, '.dipy', 'DKI trial', 'IA10', 'dipyDKI')
 
-fdwi = join(dname, 'DTIdata.nii')
+
+os.chdir("ande_merged\merged")
+
+#home = expanduser('~')
+#dname = join(home, '.dipy', 'DKI trial', 'IA10', 'dipyDKI')
+
+fdwi = 'rawDTI.nii'
 print(fdwi)
 
-fbval = join(dname, 'bvals_noS0.txt')
+fbval = 'bvals.txt'
 print(fbval)
 
-fbvec = join(dname, 'directions.txt')
+fbvec = 'bvecs.txt'
 print(fbvec)
 
 maskDTI = join(dname, 'DTImask.nii')
@@ -173,10 +177,6 @@ MD = dkifit.md
 AD = dkifit.ad
 RD = dkifit.rd
 
-nib.save(nib.Nifti1Image(FA, img.affine), 'FA_DKI.nii')
-nib.save(nib.Nifti1Image(MD, img.affine), 'MD_DKI.nii')
-nib.save(nib.Nifti1Image(AD, img.affine), 'AD_DKI.nii')
-nib.save(nib.Nifti1Image(RD, img.affine), 'RD_DKI.nii')
 
 
 """
@@ -197,10 +197,6 @@ dti_MD = tenfit.md
 dti_AD = tenfit.ad
 dti_RD = tenfit.rd
 
-nib.save(nib.Nifti1Image(dti_FA, img.affine), 'FA_DTI.nii')
-nib.save(nib.Nifti1Image(dti_MD, img.affine), 'MD_DTI.nii')
-nib.save(nib.Nifti1Image(dti_AD, img.affine), 'AD_DTI.nii')
-nib.save(nib.Nifti1Image(dti_RD, img.affine), 'RD_DTI.nii')
 
 
 """
@@ -266,10 +262,6 @@ MK = dkifit.mk(0, 3)
 AK = dkifit.ak(0, 3)
 RK = dkifit.rk(0, 3)
 
-nib.save(nib.Nifti1Image(MK, img.affine), 'MK.nii')
-nib.save(nib.Nifti1Image(AK, img.affine), 'AK.nii')
-nib.save(nib.Nifti1Image(RK, img.affine), 'RK.nii')
-
 
 """
 Now we are ready to plot the kurtosis standard measures using matplotlib:
@@ -293,6 +285,28 @@ ax.flat[2].set_title('RK')
 
 plt.show()
 fig2.savefig('Kurtosis_tensor_standard_measures.png')
+
+os.chdir("DKI")
+
+
+
+nib.save(nib.Nifti1Image(FA, img.affine), 'FA_DKI.nii')
+nib.save(nib.Nifti1Image(MD, img.affine), 'MD_DKI.nii')
+nib.save(nib.Nifti1Image(AD, img.affine), 'AD_DKI.nii')
+nib.save(nib.Nifti1Image(RD, img.affine), 'RD_DKI.nii')
+
+nib.save(nib.Nifti1Image(dti_FA, img.affine), 'FA_DTI.nii')
+nib.save(nib.Nifti1Image(dti_MD, img.affine), 'MD_DTI.nii')
+nib.save(nib.Nifti1Image(dti_AD, img.affine), 'AD_DTI.nii')
+nib.save(nib.Nifti1Image(dti_RD, img.affine), 'RD_DTI.nii')
+
+
+
+nib.save(nib.Nifti1Image(MK, img.affine), 'MK.nii')
+nib.save(nib.Nifti1Image(AK, img.affine), 'AK.nii')
+nib.save(nib.Nifti1Image(RK, img.affine), 'RK.nii')
+
+
 
 
 """
