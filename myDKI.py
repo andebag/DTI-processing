@@ -71,7 +71,7 @@ print(fbval)
 fbvec = 'bvecs.txt'
 print(fbvec)
 
-maskDTI = join(dname, 'DTImask.nii')
+maskDTI = 'DTImask.nii'
 print(maskDTI)
 
 img = nib.load(fdwi)
@@ -345,11 +345,4 @@ References
                 http://repositorio.ul.pt/bitstream/10451/8511/1/ulfc104137_tm_Rafael_Henriques.pdf
 .. [NetoHe2015] Neto Henriques R, Correia MM, Nunes RG, Ferreira HA (2015).
                 Exploring the 3D geometry of the diffusion kurtosis tensor -
-                Impact on the development of robust tractography procedures and
-                novel biomarkers, NeuroImage 111: 85-99
-.. [Veraar2011] Veraart J, Poot DH, Van Hecke W, Blockx I, Van der Linden A,
-                Verhoye M, Sijbers J (2011). More Accurate Estimation of
-                Diffusion Tensor Parameters Using Diffusion Kurtosis Imaging.
-                Magnetic Resonance in Medicine 65(1): 138-145
-.. include:: ../links_names.inc
-"""
+                """
